@@ -1,6 +1,6 @@
 import express from "express";
 
-const app = express();
+const app = express(); // server instance create karna 
 
 app.get("/", (req, res) => {
   res.send("Hello Ravi Baby");
@@ -14,6 +14,8 @@ app.get("/about", (req, res) => {
   res.send("This is about page");
 });
 
+
+// server start karna
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
