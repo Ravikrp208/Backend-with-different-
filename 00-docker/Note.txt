@@ -1,0 +1,10 @@
+1. what is Docker ?
+
+Ans => 
+
+2. how to run docker Project ?
+
+--> 
+--> docker build -t cohort_2 .
+--> docker run cohort_2   
+--> docker run -p 8000:3000 cohort_2
