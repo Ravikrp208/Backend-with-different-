@@ -646,9 +646,9 @@ body::after {
   border: 1px solid var(--card-border);
   border-radius: var(--radius-md);
   padding: 16px;
-  transition: var(--transition-spring);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
   position: relative;
-  overflow: hidden;
+  flex-shrink: 0;
 }
 
 [data-theme="light"] .task-card {
@@ -771,6 +771,12 @@ body::after {
   color: var(--text-muted);
 }
 
+.task-desc.expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
 /* Meta Data tags (date, subtask counts) */
 .task-meta {
   display: flex;
@@ -890,7 +896,7 @@ body::after {
   font-weight: 600;
 }
 
-/* Center ADD Floating Button */
+/* ADD Floating Button at Bottom Right */
 .add-fab {
   width: 56px;
   height: 56px;
@@ -903,15 +909,15 @@ body::after {
   justify-content: center;
   cursor: pointer;
   position: absolute;
-  left: 50%;
-  transform: translate(-50%, -36px);
+  right: 20px;
+  bottom: 80px;
   box-shadow: 0 8px 25px var(--primary-glow);
   transition: var(--transition-spring);
-  z-index: 10;
+  z-index: 99;
 }
 
 .add-fab:hover {
-  transform: translate(-50%, -42px) scale(1.08) rotate(90deg);
+  transform: scale(1.08) rotate(90deg);
   box-shadow: 0 12px 30px var(--primary-glow);
 }
 
@@ -1311,9 +1317,13 @@ body::after {
 }
 
 .switch input {
+  position: absolute;
   opacity: 0;
-  width: 0;
-  height: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 2;
+  margin: 0;
 }
 
 .slider {
@@ -1327,6 +1337,8 @@ body::after {
   transition: .4s;
   border-radius: 24px;
   border: 1px solid var(--card-border);
+  z-index: 1;
+  pointer-events: none;
 }
 
 [data-theme="light"] .slider {
@@ -1384,7 +1396,7 @@ input:checked + .slider:before {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive grid for desktop mockup */
+/* Desktop & Mobile Responsive Layout Styling */
 .desktop-wrapper {
   display: flex;
   justify-content: center;
@@ -1394,3 +1406,430 @@ input:checked + .slider:before {
   padding: 20px;
   overflow: hidden;
 }
+
+/* Default Mobile States (Hidden elements) */
+.sidebar-desktop {
+  display: none;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Tasks mobile layout helper */
+.tasks-layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tasks-left-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.tasks-right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.panel-header {
+  display: none;
+}
+
+.add-task-inline-btn {
+  display: none;
+}
+
+/* Desktop Responsive Layout (>= 769px) */
+@media (min-width: 769px) {
+  .desktop-wrapper {
+    padding: 0;
+  }
+
+  .app-container {
+    max-width: 1200px;
+    width: 100%;
+    height: 90vh;
+    max-height: 820px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Desktop Sidebar Layout */
+  .sidebar-desktop {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    background: rgba(11, 15, 25, 0.5);
+    border-right: 1px solid var(--card-border);
+    padding: 24px 18px;
+    justify-content: space-between;
+    height: 100%;
+    flex-shrink: 0;
+  }
+
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-left: 6px;
+    margin-bottom: 32px;
+  }
+
+  .sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    text-align: left;
+    width: 100%;
+  }
+
+  .sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+  }
+
+  .sidebar-link.active {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 4px 15px var(--primary-glow);
+  }
+
+  .sidebar-link svg {
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar-link.active svg {
+    transform: scale(1.08);
+  }
+
+  .sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    color: white;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .user-details span {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .user-details p {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  /* Tasks Grid Panels */
+  .tasks-layout-wrapper {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .tasks-left-panel {
+    border-right: 1px solid var(--card-border);
+    background: rgba(22, 28, 45, 0.1);
+    height: 100%;
+    overflow-y: auto;
+    padding-bottom: 24px;
+  }
+
+  /* Hide header's profile section in desktop */
+  .app-header .profile-section {
+    display: none;
+  }
+
+  .app-header {
+    background: none;
+    border-bottom: none;
+    padding-top: 24px;
+  }
+
+  .tasks-right-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    padding: 24px;
+    position: relative;
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .panel-header h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .task-count-badge {
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--primary);
+    border-radius: 20px;
+    font-weight: 700;
+    border: 1px solid rgba(139, 92, 246, 0.15);
+  }
+
+  .add-task-inline-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--primary-glow);
+    transition: var(--transition-spring);
+  }
+
+  .add-task-inline-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px var(--primary-glow);
+  }
+
+  /* Bottom sheet transforms into centered Modal Dialog */
+  .bottom-sheet-overlay {
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .bottom-sheet {
+    width: 100%;
+    max-width: 480px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    max-height: 90%;
+    padding: 24px;
+    animation: modal-zoom 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes modal-zoom {
+    from { opacity: 0; transform: scale(0.96) translateY(12px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  /* Hidden Bottom Nav Bar */
+  .bottom-nav {
+    display: none;
+  }
+
+  /* FAB float settings */
+  .add-fab {
+    bottom: 24px;
+    right: 24px;
+    width: 52px;
+    height: 52px;
+  }
+
+  /* Analytics & Settings tweaks */
+  .stats-view, .settings-view {
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+/* --- Added Premium Animations & Theme Polish --- */
+
+/* Smooth Line Strikethrough Animation for Task Title */
+.task-title-inner {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.task-title-inner::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 52%;
+  width: 0;
+  height: 2px;
+  background: var(--text-muted);
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-50%);
+}
+
+.completed .task-title-inner::after {
+  width: 100%;
+}
+
+/* Smooth Line Strikethrough Animation for Checklist Subtasks */
+.subtask-title-inner {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.subtask-title-inner::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 52%;
+  width: 0;
+  height: 1.5px;
+  background: var(--text-muted);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-50%);
+}
+
+.checkbox-hidden:checked ~ .subtask-title-inner::after {
+  width: 100%;
+}
+
+.checkbox-hidden:checked ~ .subtask-title-inner {
+  color: var(--text-muted);
+}
+
+/* CSS Grid Height Animation for Expanding Checklist/Subtasks */
+.task-expand-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.task-expand-wrapper.expanded {
+  grid-template-rows: 1fr;
+}
+
+.task-expand-inner {
+  min-height: 0;
+}
+
+/* Springy Pop-in Animation for Cards */
+@keyframes spring-pop {
+  0% { transform: scale(0.92) translateY(12px); opacity: 0; }
+  70% { transform: scale(1.01) translateY(-2px); opacity: 0.9; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.task-card.fade-in {
+  animation: spring-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Interactive Card Hovers */
+.task-card {
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="light"] .task-card:hover {
+  box-shadow: 0 8px 20px rgba(31, 38, 135, 0.05);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.task-card:active {
+  transform: scale(0.99) translateY(-1px);
+}
+
+/* Category Card Spring Actions */
+.category-card {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:active {
+  transform: scale(0.95);
+}
+
+/* Light Theme Sidebar Enhancements */
+[data-theme="light"] .sidebar-desktop {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .sidebar-user {
+  background: rgba(0, 0, 0, 0.03) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .sidebar-link:hover {
+  background: rgba(0, 0, 0, 0.03) !important;
+}
+
+
