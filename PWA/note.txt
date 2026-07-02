@@ -1,0 +1,472 @@
+# Build a Modern AI-Powered Todo Web Application (2027 Edition)
+
+You are an expert Full Stack Software Engineer and UI/UX Designer.
+
+Build a production-ready, responsive, AI-powered Todo Web Application using the MERN Stack.
+
+## Tech Stack
+
+### Frontend
+
+* React.js (Vite)
+* Tailwind CSS
+* React Router DOM
+* Axios
+* React Hook Form
+* Framer Motion
+* Zustand or Redux Toolkit
+* React Query (TanStack Query)
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT Authentication
+* Bcrypt
+* Cookie Parser
+* Nodemailer
+
+### Additional Technologies
+
+* Socket.IO (Real-time updates)
+* Firebase Cloud Messaging (Push Notifications)
+* Web Speech API (Voice Input)
+* PWA Support
+* OpenAI/Gemini API Integration
+
+---
+
+# UI Requirements
+
+Create a modern UI similar to Notion, TickTick, Linear, and Todoist.
+
+Features:
+
+* Glassmorphism
+* Soft Shadows
+* Smooth Animations
+* Responsive Design
+* Mobile First
+* Dark Mode
+* Light Mode
+* Beautiful Color Palette
+* Modern Typography
+* Custom Dashboard
+* Skeleton Loading
+* Toast Notifications
+* Empty States
+* Error Pages
+* Loading Screens
+
+---
+
+# Authentication
+
+Implement:
+
+* Register
+* Login
+* Logout
+* Google OAuth
+* GitHub OAuth
+* Email Verification
+* Forgot Password
+* Reset Password
+* JWT Authentication
+* Refresh Token
+* Protected Routes
+* Role Based Authentication
+* Profile Page
+* Change Password
+* Upload Profile Image
+
+---
+
+# Todo Features
+
+Users can:
+
+* Create Task
+* Edit Task
+* Delete Task
+* Archive Task
+* Restore Task
+* Mark Complete
+* Duplicate Task
+* Pin Task
+* Favorite Task
+
+Each task should contain:
+
+* Title
+* Description
+* Priority
+* Category
+* Tags
+* Due Date
+* Due Time
+* Estimated Time
+* Attachments
+* Notes
+* Checklist
+* Progress Percentage
+* Reminder
+* Repeat Schedule
+
+---
+
+# Categories
+
+Default:
+
+* Personal
+* Work
+* Study
+* Shopping
+* Fitness
+* Finance
+
+Users can create unlimited custom categories.
+
+---
+
+# Priority Levels
+
+* High
+* Medium
+* Low
+
+Display different colors and icons.
+
+---
+
+# Calendar
+
+Implement:
+
+* Daily View
+* Weekly View
+* Monthly View
+* Agenda View
+
+Drag tasks directly on the calendar.
+
+---
+
+# Kanban Board
+
+Columns:
+
+* Todo
+* In Progress
+* Review
+* Completed
+
+Support drag-and-drop using DnD Kit.
+
+---
+
+# AI Features
+
+Implement AI-powered productivity tools.
+
+### AI Task Generator
+
+Example:
+
+Input:
+
+"I have a Java exam next week."
+
+AI automatically creates:
+
+* Revise OOP
+* Practice Coding
+* Solve PYQs
+* Mock Test
+
+---
+
+### AI Smart Breakdown
+
+Input:
+
+Build Ecommerce Website
+
+Output:
+
+* Research
+* UI Design
+* Backend
+* Database
+* Payment
+* Testing
+* Deployment
+
+---
+
+### AI Smart Priority
+
+Automatically detect urgency and assign priority.
+
+---
+
+### AI Time Estimation
+
+Estimate how many hours each task will take.
+
+---
+
+### AI Daily Planner
+
+Automatically generate today's best schedule.
+
+---
+
+### AI Productivity Insights
+
+Analyze:
+
+* Most productive day
+* Average completed tasks
+* Focus score
+* Weekly improvement
+* Monthly report
+
+---
+
+### AI Reminder Suggestions
+
+Notify users when important work is being delayed.
+
+---
+
+### AI Voice Assistant
+
+Allow users to say:
+
+"Remind me to submit my assignment tomorrow at 8 PM."
+
+Automatically create the task.
+
+---
+
+# Search
+
+Implement global search.
+
+Search by:
+
+* Title
+* Category
+* Tags
+* Description
+* Priority
+
+---
+
+# Filters
+
+* Today
+* Tomorrow
+* This Week
+* This Month
+* Completed
+* Pending
+* High Priority
+* Archived
+
+---
+
+# Sorting
+
+* Due Date
+* Priority
+* Recently Added
+* Alphabetically
+
+---
+
+# Notifications
+
+Implement:
+
+* Browser Notifications
+* Email Notifications
+* Push Notifications
+* Reminder Notifications
+
+---
+
+# Dashboard
+
+Display:
+
+* Today's Tasks
+* Pending Tasks
+* Completed Tasks
+* Weekly Progress
+* Monthly Progress
+* Completion Rate
+* Productivity Score
+* Upcoming Deadlines
+* Calendar Widget
+* Recent Activity
+
+---
+
+# Collaboration
+
+Users can:
+
+* Share Lists
+* Invite Members
+* Assign Tasks
+* Comment
+* Mention Users
+* Real-time Updates
+
+---
+
+# Habit Tracker
+
+Track:
+
+* Water Intake
+* Workout
+* Reading
+* Coding
+* Meditation
+
+Include streaks and progress charts.
+
+---
+
+# Pomodoro Timer
+
+Implement:
+
+* 25/5 Mode
+* Custom Timer
+* Auto Start
+* Statistics
+
+---
+
+# Analytics
+
+Create beautiful charts showing:
+
+* Weekly Productivity
+* Monthly Productivity
+* Task Completion
+* Category Distribution
+* Focus Time
+* Streak History
+
+---
+
+# Offline Support
+
+Convert into a Progressive Web App.
+
+Support:
+
+* Offline Tasks
+* Background Sync
+* Cache API
+* Installable App
+
+---
+
+# Settings
+
+Allow users to:
+
+* Change Theme
+* Accent Color
+* Language
+* Notification Preferences
+* Time Zone
+* Date Format
+
+---
+
+# Security
+
+Implement:
+
+* Rate Limiting
+* Helmet
+* CORS
+* Input Validation
+* MongoDB Injection Protection
+* XSS Protection
+* CSRF Protection
+
+---
+
+# Performance
+
+Optimize:
+
+* Lazy Loading
+* Code Splitting
+* Image Optimization
+* React Memoization
+* Pagination
+* Infinite Scrolling
+
+---
+
+# Folder Structure
+
+Use a scalable production-ready architecture with separate folders for:
+
+* Components
+* Pages
+* Layouts
+* Hooks
+* Context
+* Services
+* API
+* Utilities
+* Middleware
+* Controllers
+* Models
+* Routes
+* Config
+* Validation
+* Types
+
+---
+
+# Code Quality
+
+* Clean Code
+* Reusable Components
+* Custom Hooks
+* Error Boundaries
+* Type-safe APIs where applicable
+* Proper Comments
+* Environment Variables
+* Modular Architecture
+
+---
+
+# Deliverables
+
+Generate:
+
+1. Complete frontend
+2. Complete backend
+3. MongoDB models
+4. REST APIs
+5. Authentication
+6. AI integration
+7. Deployment configuration
+8. README documentation
+9. API documentation
+10. Production-ready code with best practices.
