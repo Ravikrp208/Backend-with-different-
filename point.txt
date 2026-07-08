@@ -1,0 +1,55 @@
+----------------- devops ----------------------------------
+
+1. docker image create :-
+     ✅ docker build . -t  express_server 
+
+    2. docker run -p 8080:3000 express-server
+     ✅ port maping karata hai
+
+3. docker compose up 
+✅ Image build karti hai (agar zarurat ho)
+✅ Container create karti hai
+✅ Container start karti hai
+✅ Network create karti hai (agar nahi bana ho)
+
+4. docker compose down Ye command:
+✅ Container stop karti hai
+✅ Container remove karti hai
+✅ Compose network remove karti hai    
+
+
+
+
+
+---------------------------------AWS----------------------------
+1. what is Platform as a service ? (PaaS)
+     Platform as a Service (PaaS) is a cloud computing model that provides a complete platform for developing, running, and managing applications without the need to manage the underlying hardware or operating systems.
+
+     How PaaS Works
+
+     The cloud provider manages:
+
+     Servers
+     Storage
+     Networking
+     Operating systems
+     Middleware
+     Runtime environments
+
+     The user focuses on:
+
+     Writing code
+     Testing applications
+     Deploying and managing applications
+     
+
+#  Popular PaaS Providers
+    . Google Cloud App Engine
+    . Microsoft Azure App Service
+    . Salesforce Heroku
+    . Red Hat OpenShift
+          
+
+2 . infrastructure as a service ? (Iaas)
+
+3. software as a service ? (saas)
