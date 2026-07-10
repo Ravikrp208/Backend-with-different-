@@ -1,0 +1,27 @@
+
+FROM node:20-alpine AS frontend_bulilder 
+
+WORKDIR /app
+
+COPY ./Frontend/package*.json /app
+
+RUN npm install
+
+copy ./Frontend /app    
+
+RUN npm run build
+
+# stage 2
+
+FROM node:20-alpine AS backend_builder
+
+WORKDIR /app
+
+COPY ./Backend/package*.json /app
+
+RUN npm install
+
+COPY ./Backend /app
+
+
+
