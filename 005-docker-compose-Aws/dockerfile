@@ -1,4 +1,5 @@
 
+#stage 1 Frontend build 
 FROM node:20-alpine AS frontend_bulilder 
 
 WORKDIR /app
@@ -7,11 +8,11 @@ COPY ./Frontend/package*.json /app
 
 RUN npm install
 
-copy ./Frontend /app    
+COPY ./Frontend /app    
 
 RUN npm run build
 
-# stage 2
+# stage 2  full backend build (image)
 
 FROM node:20-alpine AS backend_builder
 
@@ -23,5 +24,9 @@ RUN npm install
 
 COPY ./Backend /app
 
+
+COPY --from=frontend_bulilder /app/dist /app/public
+
+CMD [ "node " , "server.js" ]
 
 
