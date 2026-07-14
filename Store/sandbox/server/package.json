@@ -1,19 +1,24 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
   "type": "module",
+  "main": "server.js",
   "scripts": {
+    "dev": "nodemon -L server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.7.4",
     "morgan": "^1.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
