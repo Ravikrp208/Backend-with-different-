@@ -1,11 +1,21 @@
 import React from 'react'
+import About from './components/About'
 
 const App = () => {
+
+
+  const [count ,setcount ] = usestate()
+
+
   return (
     <>
-    <h1 className='text-3xl font-bold underline'>
-      Hello world!
-    </h1>
+  <div>
+   <h1> count -{count } </h1>
+   <button onClick={()=>setcount(count+1)}>Increment</button>
+   <button onClick={()=>setcount(count-1)}>Decrement</button>
+    <About /> 
+  </div>
+  
 
     </>
   )
