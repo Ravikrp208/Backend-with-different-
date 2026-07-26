@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ethers } from "ethers";
+import react, { useState, useEffect, use } from "react";
+import { ethers, BrowserProvider } from "ethers";
 const Healthcare = () => {
   const [accountAddress, setAccountAddress] = useState("");
   const [authorizeAddress, setAuthorizeAddress] = useState("");

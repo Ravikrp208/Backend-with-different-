@@ -1,5 +1,5 @@
 import "./App.css";
-import Healthcare from "./healthcare";
+import Healthcare from "./HealthCare";
 
 function App() {
   return (
