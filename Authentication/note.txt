@@ -1,0 +1,5 @@
+Authentication  ==> user kon hai
+
+
+
+Authorization ==> user kya kya kar sakta hai
