@@ -2,15 +2,18 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../../../config/axiosinstance";
 
 export const loginUser = createAsyncThunk(
-  "auth/loginUser",
+  "auth/login",
 
-  async (userData, { rejectWithValue }) => {
+  async (credentials, thunkApi) => {
     try {
-      const response = await axiosInstance.post("/auth/login", userData);
-
+      const response = await axiosInstance.post("/auth/login", credentials);
       return response.data;
-    } catch (error) {
-      return rejectWithValue(
+
+
+    } 
+    catch (error)
+     {
+      return thunkApi.rejectWithValue(
         error.response?.data || {
           message: "Login failed",
         },
