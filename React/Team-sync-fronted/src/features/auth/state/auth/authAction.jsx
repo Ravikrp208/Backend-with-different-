@@ -21,3 +21,20 @@ export const loginUser = createAsyncThunk(
     }
   },
 );
+
+export const currentloggedEmployee = createAsyncThunk(
+  "auth/me",
+  async (_, thunkApi) => {
+    try {
+      const response = await axiosInstance.get("/auth/me");
+      console.log(res);
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(
+        error.response?.data || {
+          message: "Failed to fetch current employee",
+        },
+      );
+    }
+  }
+);

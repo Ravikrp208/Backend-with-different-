@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, Share2, Cpu } from 'lucide-react';
+import { useAuth } from '../hooks/useAuth';
 
 const Login = () => {
+  const { onLoginSubmit } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -10,10 +12,12 @@ const Login = () => {
     staySignedIn: false
   });
 
-  const handleSubmit = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('Logging in:', formData);
+    onLoginSubmit(formData);
   };
+
+
 
   return (
     <div className="min-h-screen w-full bg-[#0b0a10] text-white flex flex-col justify-center items-center p-4 sm:p-6 relative overflow-hidden font-sans selection:bg-purple-500 selection:text-white">
@@ -51,7 +55,7 @@ const Login = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4 pt-1">
+        <form onSubmit={handleFormSubmit} className="space-y-4 pt-1">
           
           {/* Email Address */}
           <div>
